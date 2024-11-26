@@ -34,6 +34,10 @@ public class GroupOfCards {
         return cards;
     }
 
+	public void setCards(ArrayList<Card> cards) {
+		this.cards = cards;
+	}
+
     public void shuffle() {
         Collections.shuffle(cards);
     }
