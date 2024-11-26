@@ -13,8 +13,8 @@ public class Deck extends GroupOfCards {
 	private void initializeDeck() {	
 		// Add all combinations of playing card to deck
 		this.setCards(new ArrayList<>());
-		for (var value : PlayingCard.Suit.values()) {
-			for (var suit: PlayingCard.Value.values()) {	
+		for (var value : Suit.values()) {
+			for (var suit: Value.values()) {	
 				this.getCards().add(new PlayingCard(suit, value));
 			}
 		}

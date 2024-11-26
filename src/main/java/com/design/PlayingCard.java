@@ -2,14 +2,6 @@ package com.design;
 
 public class PlayingCard extends Card {
 
-	public enum Suit {
-		HEARTS, CLUBS, SPADES, DIAMONDS
-	}
-
-	public enum Value {
-		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
-	}
-
 	private Value value;
 	private Suit suit;
 
@@ -19,7 +11,7 @@ public class PlayingCard extends Card {
 	}
 
 	@Override
-	public String toString() {	
+	public String toString() {
 		return toUpperFirstChar(value.toString()) + " of " + toUpperFirstChar(suit.toString());
 	}
 

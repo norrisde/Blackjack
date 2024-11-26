@@ -8,7 +8,7 @@ public class PlayingCardTest {
 	@Test
 	public void testToString() {
 		System.out.println("Testing PlayingCard::toString");
-		PlayingCard card = new PlayingCard(PlayingCard.Value.QUEEN, PlayingCard.Suit.HEARTS);
+		PlayingCard card = new PlayingCard(Value.QUEEN, Suit.HEARTS);
 
 		String result = card.toString();
 		System.out.println("Result: " + result);
