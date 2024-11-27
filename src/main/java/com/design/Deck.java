@@ -22,4 +22,8 @@ public class Deck extends GroupOfCards {
 		this.shuffle();
 		this.setSize(this.getCards().size());
 	}
+
+	public PlayingCard draw() {
+		return (PlayingCard) this.getCards().removeLast();
+	}
 }
