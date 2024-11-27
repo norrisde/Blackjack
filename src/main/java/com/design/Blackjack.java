@@ -10,8 +10,21 @@ package com.design;
  */
 public class Blackjack {
 
-    public static void main(String[] args) {
-		BlackjackGame game = new BlackjackGame();
+	public static void main(String[] args) {
+		Blackjack.runGame();
+	}
+
+	public static void runGame() {
+		int initialPlayerMoney = 1000;
+
+		BlackjackGame game = new BlackjackGame(initialPlayerMoney);
 		game.play();
-    }
+
+		while (game.getPlayer().getMoney() > 0 && game.getPlayer().wantsToContinue()) {
+			System.out.println("\n\n\nNEW ROUND\n");
+			game.play();
+		}
+
+		game.over();
+	}
 }

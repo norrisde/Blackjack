@@ -7,17 +7,19 @@ public class BlackjackGame extends Game {
 	private Dealer dealer;
 	private String winnerName;
 
-	public BlackjackGame() {
+	public BlackjackGame(int initialPlayerMoney) {
 		super("Blackjack");
 
-		deck = new Deck();
-		player = new BlackjackPlayer(1000);
+		player = new BlackjackPlayer(initialPlayerMoney);
 		dealer = new Dealer();
 	}
 
 	@Override
 	public void play() {
 		AbstractBlackjackPlayer[] players = { player, dealer };
+		deck = new Deck();
+		player.reset();
+		dealer.reset();
 
 		player.chooseBet();
 
@@ -100,4 +102,12 @@ public class BlackjackGame extends Game {
 		System.out.println(winnerName + " wins the game!");
 	}
 
+	public void over() {
+		System.out.println("GAME OVER");
+		System.out.println("You ended with $" + player.getMoney());
+	}
+
+	public BlackjackPlayer getPlayer() {
+		return player;
+	}
 }

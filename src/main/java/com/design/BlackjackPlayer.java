@@ -117,4 +117,15 @@ public class BlackjackPlayer extends AbstractBlackjackPlayer {
 		super.addCard(card);
 	}
 
+	public int getMoney() {
+		return this.money;
+	}
+
+	public boolean wantsToContinue() {
+		System.out.println("\n\n\nCurrent money: $" + money);
+		System.out.print("Do you want to continue? Y/N: ");
+		
+		return scanner.nextLine().equalsIgnoreCase("Y");
+	}
+
 }

@@ -21,5 +21,8 @@ public abstract class AbstractBlackjackPlayer extends Player {
 		return hand;
 	}
 
+	public void reset() {
+		this.hand = new BlackjackHand();
+	}
 }
 
