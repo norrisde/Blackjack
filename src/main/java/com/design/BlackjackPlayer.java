@@ -15,6 +15,34 @@ public class BlackjackPlayer extends AbstractBlackjackPlayer {
 		this.scanner = new Scanner(System.in);
 	}
 
+	public void chooseBet() {
+		while(true) {
+			System.out.printf("Current money: %d, Choose an initial bet: $", money);
+			int bet;
+			try {
+				bet = Integer.parseInt(scanner.nextLine());
+			} catch(Exception e) {
+				System.out.println("Invalid input.");
+				continue;
+			}
+
+			if (bet > money) {
+				System.out.println("Not enough money.");
+				continue;
+			}
+
+			if (bet <= 0) {
+				System.out.println("Bet must be a positive integer.");
+				continue;
+			}
+
+			System.out.println("Set current bet: $" + bet);
+			currentBet = bet;
+			money -= bet;
+			break;
+		}
+	}
+
 	public void showStatus() {
 		System.out.printf("Current money: $%d, Current bet: $%d,  (Turn %d)\n", money, currentBet, turn);
 		System.out.println(getHand());
@@ -56,23 +84,29 @@ public class BlackjackPlayer extends AbstractBlackjackPlayer {
 	}
 
 	public void win() {
-		// Win an extra 50% on Blackjacks
-		currentBet *= getScore() == 21 ? 2.5 : 2.0;
-		System.out.println("+ $" + currentBet);
+		int score = getScore();
+		if (score == 21) { // Win an extra 50% on Blackjacks
+			System.out.println("Won $" + currentBet +  "! (Blackjack x2.5)");
+			currentBet *= 2.5;
+		} else {
+			System.out.println("Won $" + currentBet +  "!");
+			currentBet *= 2;
+		}
+
 		money += currentBet;
 		currentBet = 0;
 		turn = 0;
 	}
 
 	public void tie() {
-		System.out.println("+ $0");
+		System.out.println("Bet returned. ($" + currentBet + ")");
 		money += currentBet; // Return bet
 		currentBet = 0;
 		turn = 0;
 	}
 
 	public void lose() {
-		System.out.println("- $" + currentBet);
+		System.out.println("Bet lost. ($" + currentBet + ")");
 		currentBet = 0; // Lose bet
 		turn = 0;
 	}

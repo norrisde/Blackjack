@@ -19,10 +19,14 @@ public class BlackjackGame extends Game {
 	public void play() {
 		AbstractBlackjackPlayer[] players = { player, dealer };
 
+		player.chooseBet();
+
 		// Both players start with 2 cards.
+		delay();
 		for (int i = 0; i < 2; i++) {
 			player.addCard(deck.draw());
 			dealer.addCard(deck.draw());
+			delay();
 		}
 
 		while (true) {
