@@ -86,8 +86,8 @@ public class BlackjackPlayer extends AbstractBlackjackPlayer {
 	public void win() {
 		int score = getScore();
 		if (score == 21) { // Win an extra 50% on Blackjacks
-			System.out.println("Won $" + currentBet +  "! (Blackjack x2.5)");
 			currentBet *= 2.5;
+			System.out.println("Won $" + currentBet +  "! (Blackjack x2.5)");
 		} else {
 			System.out.println("Won $" + currentBet +  "!");
 			currentBet *= 2;
